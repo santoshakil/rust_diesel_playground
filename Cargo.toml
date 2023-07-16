@@ -1,0 +1,9 @@
+[package]
+name = "rust_diesel_playground"
+version = "0.1.0"
+edition = "2021"
+
+
+[dependencies]
+diesel = { version = "2.1", features = ["sqlite"] }
+dotenvy = "0.15"
