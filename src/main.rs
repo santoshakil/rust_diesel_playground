@@ -4,7 +4,7 @@ use diesel::prelude::*;
 
 use crate::schema::users;
 
-#[derive(Queryable, Insertable)]
+#[derive(Selectable, Queryable, Insertable, Debug)]
 #[diesel(table_name = users)]
 struct NewUser<'a> {
     name: &'a str,
@@ -29,7 +29,7 @@ fn main() {
         .execute(&mut connection)
         .expect("Error inserting users");
 
-    let users = users::table
+    let all_users = users::table
         .load::<NewUser>(&mut connection)
         .expect("Error loading users");
 }
